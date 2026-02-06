@@ -142,9 +142,10 @@ def seed_demo_users(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-    dependencies = [
-        ("employees", "0009_seed_demo_users"),  # اگر 0009 نداری/اسمش فرق داره، بگو تا دقیقش کنم
-    ]
+dependencies = [
+    ("employees", "0008_seed_manager_role"),
+]
+
 
     operations = [
         migrations.RunPython(seed_demo_users, migrations.RunPython.noop),
