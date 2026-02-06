@@ -1,0 +1,811 @@
+i have to build the hrms platform, so i want your help in guiding me all the features and details 
+Updated saved memory
+
+Building an HRMS (Human Resource Management System) platform involves covering a range of features and functionalities to manage employees, payroll, attendance, recruitment, and more. Here's a guide to help you with the key features and details you should consider for your HRMS platform:
+
+1. Employee Management
+
+Employee Profiles: Store and manage personal and professional information (name, contact, designation, department, manager, etc.).
+
+Document Management: Allow uploading of important employee documents like ID proofs, contracts, etc.
+
+Employee Directory: A searchable directory with employee contact details, roles, and teams.
+
+Job Titles & Roles: Manage different job titles, roles, and job descriptions across the organization.
+
+Leave & Attendance Management: Track employee attendance, time-off requests, and manage leave types (sick leave, vacation, etc.).
+
+2. Payroll Management
+
+Salary Structure: Set up different pay structures based on roles, departments, or job levels.
+
+Salary Calculation: Automated calculation of salaries, including deductions (tax, insurance), and bonuses.
+
+Tax Calculation & Compliance: Handle employee taxes, provident fund, and other statutory compliance requirements.
+
+Payslip Generation: Automated payslip generation with detailed breakdowns (allowances, deductions, net pay).
+
+Bonus & Incentives: Track performance-based bonuses and other incentives.
+
+3. Leave Management
+
+Leave Requests: Employees can request leave, which is automatically routed to the manager for approval.
+
+Leave History: Maintain leave records and balance for each employee.
+
+Public Holidays: Set up and manage public holidays, and track whether they fall on weekends or weekdays.
+
+4. Time Tracking & Attendance
+
+Clock-in/Clock-out: Employees can log their working hours via the platform.
+
+Biometric Integration: Integrate biometric devices (fingerprint, facial recognition) for time tracking.
+
+Overtime Management: Track and manage overtime work and compensation.
+
+Shift Management: Manage employee shifts (e.g., morning, evening, rotating) and scheduling.
+
+5. Recruitment & Onboarding
+
+Job Postings: Create and post job openings on the platform.
+
+Applicant Tracking System (ATS): Track candidates from application through interviews and selection.
+
+Interview Scheduling: Schedule interviews and send reminders to candidates and interviewers.
+
+Employee Onboarding: Automated onboarding processes like document submission, contract signing, and orientation.
+
+Job Offers & Contracts: Generate and send digital job offers and contracts.
+
+6. Performance Management
+
+Goal Setting: Set performance goals for employees and teams.
+
+Performance Reviews: Enable managers to review and evaluate employee performance periodically.
+
+360-degree Feedback: Gather feedback from peers, subordinates, and managers for a comprehensive performance review.
+
+Employee Appraisal: Track and document salary increases and performance-based incentives.
+
+7. Employee Self-Service Portal
+
+Profile Update: Employees can update personal details, emergency contacts, and bank information.
+
+Leave Requests: Employees can request, track, and manage their leave balances.
+
+Payslip Access: View past payslips and other payroll-related information.
+
+Training & Development: Access training materials, courses, and certifications.
+
+8. Training & Development
+
+Learning Management System (LMS): Integrate training modules and online courses for employee development.
+
+Skill Management: Track employee skills and certifications, and suggest relevant training.
+
+Training Scheduling: Organize and schedule internal or external training sessions.
+
+9. Reporting & Analytics
+
+Employee Analytics: Generate reports on employee data such as attendance, leaves, performance, and payroll.
+
+HR Metrics: Track key HR metrics such as attrition rates, hiring trends, and training effectiveness.
+
+Customizable Dashboards: Provide HR managers with a customizable dashboard for quick access to metrics and reports.
+
+10. Compliance & Security
+
+Statutory Compliance: Ensure compliance with labor laws, tax regulations, and other legal requirements.
+
+Data Security: Implement robust security measures to protect sensitive employee data.
+
+Audit Trails: Track and log all changes to employee records, payroll, and other HR-related actions.
+
+Role-based Access Control: Restrict access to sensitive information based on roles (admin, HR manager, employee).
+
+11. Employee Engagement
+
+Surveys & Feedback: Conduct employee surveys and gather feedback to improve workplace culture.
+
+Employee Recognition: Implement recognition programs for employee milestones (anniversaries, birthdays, etc.).
+
+Social Collaboration Tools: Integrate tools for team collaboration, communication, and knowledge sharing.
+
+12. Exit Management
+
+Resignation & Termination: Handle the resignation process, including exit interviews, document handover, and final settlements.
+
+Exit Surveys: Gather feedback from departing employees to improve the working environment.
+
+13. Mobile Application
+
+Mobile Accessibility: Develop a mobile app for employees to manage their profiles, leave requests, attendance, and other HR activities on the go.
+
+Push Notifications: Send important reminders and updates via push notifications.
+
+14. Integration Capabilities
+
+Third-Party Integrations: Integrate with external services like job portals, background verification, payroll providers, and tax filing systems.
+
+API Access: Allow external systems to interact with the HRMS through APIs for data exchange.
+
+15. Customizability & Scalability
+
+Custom Workflows: Support customizable workflows for approvals, performance reviews, and more.
+
+Scalable Architecture: Ensure that the platform can scale with the growth of the company.
+
+Would you like me to dive deeper into any of these features or help you define the system architecture?
+
+yes 
+
+Let’s dive deeper into the key features and system architecture for your HRMS platform. Here's a breakdown of the important components and how you can structure the system:
+
+1. System Architecture
+
+The system architecture for an HRMS platform should be scalable, secure, and modular. Below is a high-level structure:
+
+a. Frontend
+
+Technologies: React
+
+Components:
+
+Dashboard: For HR and employee analytics, showcasing key performance indicators, leave balances, payroll details, etc.
+
+Employee Self-Service Portal: A portal where employees can update profiles, request leaves, check payslips, etc.
+
+Admin Panel: For HR personnel to manage employee records, generate reports, and handle payroll and leave management.
+
+Forms: For tasks like adding employee details, uploading documents, requesting leaves, etc.
+
+b. Backend
+
+Technologies: Django
+
+Database: MongoDB
+
+Key Modules:
+
+Employee Management: CRUD operations for employee data.
+
+Payroll Management: Logic for salary computation, deductions, and tax management.
+
+Leave Management: APIs to request, approve, and track leaves.
+
+Time Tracking: To record attendance, clock-in/out times, and manage shifts.
+
+Performance Reviews: Store and process employee reviews, feedback, and goals.
+
+Reports: Generate detailed reports for HR managers (attendance, payroll, performance).
+
+Authentication & Authorization: Using JWT (JSON Web Tokens) or OAuth2 for secure access to HRMS features.
+
+c. Database Schema
+
+Here’s an outline for a typical database schema that you can customize further based on specific requirements:
+
+Tables:
+
+employees: Store personal details, job role, department, and employment status.
+
+attendance: Track daily clock-in/out, working hours, overtime.
+
+payroll: Store salary details, bonuses, deductions, payslips.
+
+leave_requests: Manage leave requests, approval status, and leave balances.
+
+performance_reviews: Store employee review scores, feedback, and goals.
+
+job_postings: For tracking job openings and applications.
+
+recruitment: Track candidates’ status, interview rounds, and hiring decisions.
+
+benefits: Track employee benefits such as insurance, retirement plans, etc.
+
+holidays: Manage company holiday calendar.
+
+d. Security
+
+Role-based Access Control (RBAC): Different roles with different permissions (admin, manager, employee). For example, HR admins have full access, while employees can only view and edit their profiles.
+
+Data Encryption: Use encryption (e.g., AES) for sensitive employee data, especially payroll, bank details, and tax information.
+
+Auditing: Keep track of changes to employee records and payroll for accountability.
+
+e. Integrations
+
+Third-party integrations:
+
+Tax/Payroll APIs: For tax calculations and submitting payroll data to government agencies (e.g., Provident Fund, Income Tax).
+
+Job Portals: LinkedIn, Indeed, or company-specific job boards for posting vacancies and receiving applications.
+
+Document Management: Integrate with services like Google Drive, Dropbox, or a custom document storage system for storing employee documents.
+
+HR Analytics Tools: Integrate with external analytics tools to process HR data (e.g., PowerBI, Tableau).
+
+f. Scalability & Cloud Infrastructure
+
+Microservices: Each module (e.g., payroll, attendance, leave management) can be a separate microservice, ensuring scalability and easy maintenance.
+
+Cloud Deployment: Use cloud platforms like AWS, Azure, or Google Cloud for auto-scaling, high availability, and reliable backups.
+
+Containerization: Docker can help containerize each microservice for easier deployment across different environments.
+
+2. Detailed Breakdown of Key Features
+a. Employee Management
+
+Features:
+
+Add Employee: HR can input employee details such as name, department, designation, salary, etc.
+
+Employee Profile: Employees can view and update their personal details, emergency contacts, address, etc.
+
+Employee History: Track employee history such as promotions, salary changes, and job title changes.
+
+Technical Implementation:
+
+Use forms with validations for input.
+
+Implement file upload for documents (e.g., passport, certificates).
+
+Use AJAX for smooth user experience without page reloads.
+
+b. Payroll Management
+
+Features:
+
+Salary Structure: Define salary components like basic, bonuses, allowances, and deductions.
+
+Payslip Generation: Generate PDF payslips with breakdowns of earnings and deductions.
+
+Tax Calculation: Implement logic for calculating taxes and deductions.
+
+Technical Implementation:
+
+Create automated payroll calculation scripts based on employee data.
+
+Use a cron job to generate and send payslips automatically every month.
+
+c. Leave & Attendance Management
+
+Features:
+
+Leave Requests: Employees can request leaves for vacation, sick days, etc. HR or managers can approve or deny the requests.
+
+Attendance Tracking: Automatically track attendance using biometric devices or manual entries.
+
+Leave Balances: Show available leave days and leave history.
+
+Technical Implementation:
+
+Use date pickers and forms for leave requests.
+
+Implement rules for leave approval and limits on leave days.
+
+Use real-time updates for attendance data.
+
+d. Recruitment & Onboarding
+
+Features:
+
+Job Posting: HR can create and post job openings.
+
+Candidate Management: Track applications, interviews, and hiring decisions.
+
+Onboarding: Automate the process for new hires, including document submission and orientation tasks.
+
+Technical Implementation:
+
+Use an applicant tracking system (ATS) to manage candidate applications.
+
+Integrate interview scheduling tools and email automation for communication.
+
+e. Performance Management
+
+Features:
+
+Goal Setting: Define and track individual and team goals.
+
+360-degree Feedback: Collect feedback from peers and managers.
+
+Appraisals: Record and manage employee appraisals and salary reviews.
+
+Technical Implementation:
+
+Create forms for feedback collection.
+
+Implement progress tracking and visual representations (e.g., progress bars, graphs).
+
+f. Reporting & Analytics
+
+Features:
+
+Employee Reports: Generate detailed reports on employee performance, attendance, leaves, etc.
+
+Payroll Reports: Monthly or yearly payroll summaries.
+
+Custom Reports: Allow HR to create custom reports based on parameters like department, date range, etc.
+
+Technical Implementation:
+
+Use SQL queries for data aggregation.
+
+Implement a report generator with filter options.
+
+Use charting libraries like Chart.js or D3.js for visualizing data.
+
+3. Key Considerations
+
+Usability: Focus on a simple, intuitive interface for HR personnel and employees.
+
+Mobile Accessibility: Ensure the platform is mobile-friendly, or build a dedicated mobile app for remote access.
+
+Customizability: Let companies customize aspects of the HRMS, such as leave types, salary structure, and workflows.
+
+Would you like help on any specific feature, such as the database schema, API design, or UI/UX guidelines?
+
+first we move with database schema
+
+Great! Let’s start by designing the database schema for your HRMS platform. Here's an overview of the essential tables and their relationships. We’ll focus on a relational database (MySQL or PostgreSQL) to manage structured data for the HRMS.
+
+1. Employee Table
+
+This table will store the personal and professional details of employees.
+
+Column Name	Data Type	Description
+employee_id	INT (PK)	Unique identifier for each employee.
+first_name	VARCHAR(255)	Employee's first name.
+last_name	VARCHAR(255)	Employee's last name.
+email	VARCHAR(255)	Employee's email address (unique).
+phone_number	VARCHAR(20)	Employee's contact number.
+date_of_birth	DATE	Employee's date of birth.
+hire_date	DATE	Date when the employee was hired.
+department_id	INT (FK)	Foreign key to the departments table.
+designation	VARCHAR(255)	Job title/role.
+salary	DECIMAL(15, 2)	Monthly salary of the employee.
+status	ENUM('Active', 'Inactive')	Employee's current status.
+address	TEXT	Employee's address.
+2. Department Table
+
+This table stores information about the different departments within the organization.
+
+Column Name	Data Type	Description
+department_id	INT (PK)	Unique identifier for each department.
+name	VARCHAR(255)	Name of the department (e.g., HR, IT).
+manager_id	INT (FK)	Foreign key to the employee_id of the department head.
+3. Attendance Table
+
+This table will track employee attendance on a daily basis.
+
+Column Name	Data Type	Description
+attendance_id	INT (PK)	Unique identifier for each attendance record.
+employee_id	INT (FK)	Foreign key to the employees table.
+date	DATE	Date of the attendance record.
+clock_in_time	TIME	Time when the employee clocked in.
+clock_out_time	TIME	Time when the employee clocked out.
+working_hours	DECIMAL(5, 2)	Total working hours for the day.
+status	ENUM('Present', 'Absent', 'Leave')	Attendance status.
+4. Leave Table
+
+This table stores employee leave requests and balances.
+
+Column Name	Data Type	Description
+leave_id	INT (PK)	Unique identifier for each leave request.
+employee_id	INT (FK)	Foreign key to the employees table.
+leave_type	ENUM('Sick', 'Casual', 'Annual', 'Maternity', 'Paternity', 'Other')	Type of leave requested.
+start_date	DATE	Leave start date.
+end_date	DATE	Leave end date.
+total_days	INT	Total number of leave days.
+status	ENUM('Pending', 'Approved', 'Rejected')	Leave request status.
+reason	TEXT	Reason for leave.
+5. Payroll Table
+
+This table will track salary and payroll details for employees.
+
+Column Name	Data Type	Description
+payroll_id	INT (PK)	Unique identifier for each payroll record.
+employee_id	INT (FK)	Foreign key to the employees table.
+pay_period_start	DATE	Start date of the pay period.
+pay_period_end	DATE	End date of the pay period.
+basic_salary	DECIMAL(15, 2)	Employee's basic salary.
+bonus	DECIMAL(15, 2)	Bonuses or incentives.
+deductions	DECIMAL(15, 2)	Deductions (e.g., taxes, insurance).
+net_pay	DECIMAL(15, 2)	Net salary (after deductions).
+status	ENUM('Paid', 'Unpaid')	Payment status.
+6. Performance Reviews Table
+
+This table will store performance evaluations of employees.
+
+Column Name	Data Type	Description
+review_id	INT (PK)	Unique identifier for each performance review.
+employee_id	INT (FK)	Foreign key to the employees table.
+review_date	DATE	Date of the performance review.
+reviewer_id	INT (FK)	Foreign key to the employees table (reviewer's ID).
+score	DECIMAL(5, 2)	Review score or rating.
+feedback	TEXT	Feedback or comments on the employee's performance.
+goal_progress	DECIMAL(5, 2)	Progress on performance goals.
+7. Recruitment Table
+
+This table will store candidate and recruitment-related information.
+
+Column Name	Data Type	Description
+recruitment_id	INT (PK)	Unique identifier for each recruitment process.
+job_posting_id	INT (FK)	Foreign key to the job_postings table.
+candidate_name	VARCHAR(255)	Candidate’s name.
+email	VARCHAR(255)	Candidate’s email address.
+phone_number	VARCHAR(20)	Candidate’s contact number.
+status	ENUM('Applied', 'Interviewed', 'Hired', 'Rejected')	Current recruitment status.
+interview_date	DATE	Date of the interview.
+offer_status	ENUM('Pending', 'Offered', 'Accepted', 'Rejected')	Job offer status.
+8. Job Postings Table
+
+This table will store details about the job openings in the organization.
+
+Column Name	Data Type	Description
+job_posting_id	INT (PK)	Unique identifier for each job posting.
+job_title	VARCHAR(255)	Job title (e.g., Software Engineer).
+department_id	INT (FK)	Foreign key to the departments table.
+description	TEXT	Job description and requirements.
+posted_date	DATE	Date the job was posted.
+closing_date	DATE	Last date to apply for the job.
+status	ENUM('Open', 'Closed')	Job posting status.
+9. Leave Balances Table
+
+This table will track each employee's available leave balance for different types of leaves.
+
+Column Name	Data Type	Description
+balance_id	INT (PK)	Unique identifier for leave balance record.
+employee_id	INT (FK)	Foreign key to the employees table.
+leave_type	ENUM('Sick', 'Casual', 'Annual', 'Maternity', 'Paternity')	Type of leave.
+balance	INT	Number of leave days available.
+used	INT	Number of leave days used.
+10. Audit Table
+
+This table tracks changes made to sensitive employee records for auditing purposes.
+
+Column Name	Data Type	Description
+audit_id	INT (PK)	Unique identifier for each audit record.
+table_name	VARCHAR(255)	Name of the table being audited (e.g., employees).
+record_id	INT	ID of the record being modified.
+action_type	ENUM('Create', 'Update', 'Delete')	Action performed.
+old_value	TEXT	The previous value of the modified record.
+new_value	TEXT	The new value after modification.
+changed_by	INT (FK)	Employee ID of the person who made the change.
+timestamp	TIMESTAMP	Timestamp of the modification.
+Relationships between Tables
+
+Employee - Department: One employee belongs to one department, and one department can have many employees.
+
+Employee - Leave: One employee can have many leave requests.
+
+Employee - Attendance: One employee can have multiple attendance records.
+
+Employee - Payroll: One employee will have multiple payroll records (usually one per month).
+
+Employee - Performance Review: One employee can have many performance reviews.
+
+Job Posting - Recruitment: A job posting can be applied to by many candidates.
+
+Department - Job Posting: A department can have multiple job postings.
+
+Next Steps
+
+Indexes: For optimizing queries, consider indexing frequently queried columns such as employee_id, leave_type, job_posting_id, etc.
+
+Foreign Keys: Ensure foreign key constraints are properly set to maintain data integrity across related tables.
+
+Would you like to explore any part of this schema in more detail or help you implement it in SQL?
+
+now we move to these API design, or UI/UX guidelines
+
+Let's move forward with API design and UI/UX guidelines for your HRMS platform.
+
+1. API Design
+
+For an HRMS platform, APIs should be well-structured, RESTful, and easy to integrate with frontend and third-party systems. Here’s an outline of the key API endpoints along with their methods, request/response formats, and expected status codes.
+
+API Design Best Practices
+
+RESTful design: Use HTTP methods (GET, POST, PUT, DELETE) for CRUD operations.
+
+Versioning: Add versioning to your APIs (e.g., /api/v1/).
+
+Authentication: Use JWT for securing the API endpoints.
+
+Error Handling: Return consistent error messages with proper status codes (400 for client errors, 500 for server errors).
+
+a. Employee Management APIs
+1. Create Employee
+
+Endpoint: POST /api/v1/employees
+
+Request Body:
+
+{
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "john.doe@example.com",
+  "phone_number": "1234567890",
+  "department_id": 2,
+  "designation": "Software Engineer",
+  "salary": 60000,
+  "status": "Active",
+  "address": "123 Main St, City, Country"
+}
+
+
+Response:
+
+{
+  "id": 1,
+  "message": "Employee created successfully."
+}
+
+
+Status Codes:
+
+201 Created: Success
+
+400 Bad Request: Invalid data
+
+2. Get Employee Details
+
+Endpoint: GET /api/v1/employees/{id}
+
+Response:
+
+{
+  "id": 1,
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "john.doe@example.com",
+  "department": "IT",
+  "designation": "Software Engineer",
+  "salary": 60000,
+  "status": "Active",
+  "address": "123 Main St, City, Country"
+}
+
+
+Status Codes:
+
+200 OK: Success
+
+404 Not Found: Employee not found
+
+3. Update Employee Details
+
+Endpoint: PUT /api/v1/employees/{id}
+
+Request Body:
+
+{
+  "salary": 65000,
+  "status": "Active"
+}
+
+
+Response:
+
+{
+  "id": 1,
+  "message": "Employee updated successfully."
+}
+
+
+Status Codes:
+
+200 OK: Success
+
+400 Bad Request: Invalid data
+
+4. Delete Employee
+
+Endpoint: DELETE /api/v1/employees/{id}
+
+Response:
+
+{
+  "message": "Employee deleted successfully."
+}
+
+
+Status Codes:
+
+200 OK: Success
+
+404 Not Found: Employee not found
+
+b. Leave Management APIs
+1. Request Leave
+
+Endpoint: POST /api/v1/leave_requests
+
+Request Body:
+
+{
+  "employee_id": 1,
+  "leave_type": "Sick",
+  "start_date": "2025-12-20",
+  "end_date": "2025-12-22",
+  "reason": "Feeling unwell"
+}
+
+
+Response:
+
+{
+  "message": "Leave request submitted successfully.",
+  "status": "Pending"
+}
+
+
+Status Codes:
+
+201 Created: Success
+
+400 Bad Request: Invalid leave request data
+
+2. Get Leave Requests
+
+Endpoint: GET /api/v1/leave_requests
+
+Response:
+
+[
+  {
+    "id": 1,
+    "employee_id": 1,
+    "leave_type": "Sick",
+    "start_date": "2025-12-20",
+    "end_date": "2025-12-22",
+    "status": "Pending"
+  },
+  {
+    "id": 2,
+    "employee_id": 2,
+    "leave_type": "Annual",
+    "start_date": "2025-12-25",
+    "end_date": "2025-12-30",
+    "status": "Approved"
+  }
+]
+
+
+Status Codes:
+
+200 OK: Success
+
+3. Approve/Reject Leave Request
+
+Endpoint: PUT /api/v1/leave_requests/{id}
+
+Request Body:
+
+{
+  "status": "Approved"
+}
+
+
+Response:
+
+{
+  "message": "Leave request updated successfully."
+}
+
+
+Status Codes:
+
+200 OK: Success
+
+404 Not Found: Leave request not found
+
+c. Payroll APIs
+1. Generate Payslip
+
+Endpoint: POST /api/v1/payslips
+
+Request Body:
+
+{
+  "employee_id": 1,
+  "pay_period_start": "2025-12-01",
+  "pay_period_end": "2025-12-31",
+  "basic_salary": 60000,
+  "bonus": 5000,
+  "deductions": 2000,
+  "net_pay": 63000
+}
+
+
+Response:
+
+{
+  "message": "Payslip generated successfully.",
+  "payslip_id": 1
+}
+
+
+Status Codes:
+
+201 Created: Success
+
+400 Bad Request: Invalid data
+
+d. Performance Review APIs
+1. Submit Performance Review
+
+Endpoint: POST /api/v1/performance_reviews
+
+Request Body:
+
+{
+  "employee_id": 1,
+  "review_date": "2025-12-01",
+  "reviewer_id": 2,
+  "score": 4.5,
+  "feedback": "Excellent performance this year.",
+  "goal_progress": 90
+}
+
+
+Response:
+
+{
+  "message": "Performance review submitted successfully."
+}
+
+
+Status Codes:
+
+201 Created: Success
+
+400 Bad Request: Invalid data
+
+2. UI/UX Guidelines
+
+To ensure a smooth and intuitive user experience, follow these UI/UX principles:
+
+a. General UI Guidelines
+
+Simplicity: Keep the interface clean and simple, focusing on functionality. Avoid unnecessary clutter.
+
+Consistency: Use consistent colors, fonts, buttons, and layouts throughout the platform.
+
+Responsiveness: The platform should work seamlessly on both desktop and mobile devices.
+
+Navigation: Easy-to-use navigation bar with clear menu items. Consider using a sidebar or top bar for better accessibility.
+
+Visual Hierarchy: Use color, size, and spacing to make important elements stand out.
+
+Forms: Ensure forms are easy to fill out, with proper validation messages and tooltips.
+
+b. Employee Dashboard
+
+Welcome Message: Display a personalized welcome message and quick overview of important stats (e.g., leave balance, performance score).
+
+Leave Management: Include a calendar view for tracking upcoming leaves, along with quick links for requesting leave.
+
+Payroll Details: Display key payroll information, such as salary, bonuses, and deductions. Add a link to download detailed payslips.
+
+Notifications: Display relevant notifications for pending tasks (leave requests, performance reviews).
+
+c. HR/Admin Dashboard
+
+Employee Overview: Display a list of employees, including their status, department, and salary.
+
+Leave Requests: Include a table for managing leave requests with filters to view pending, approved, and rejected requests.
+
+Payroll Management: Provide an easy interface to generate, view, and manage employee payrolls.
+
+Reports: Include sections for generating detailed reports on attendance, payroll, and employee performance.
+
+d. Mobile Experience
+
+Minimalistic Design: For mobile users, avoid long forms or too much text on the screen. Use collapsible sections to save space.
+
+Touch-friendly: Ensure all buttons and navigation elements are large enough to be easily tapped.
+
+Push Notifications: Use push notifications for important actions, such as leave request approvals or new performance reviews.
