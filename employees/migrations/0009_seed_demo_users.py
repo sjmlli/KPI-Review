@@ -9,7 +9,6 @@ def seed_demo_users(apps, schema_editor):
     Department = apps.get_model("employees", "Department")
     User = apps.get_model("auth", "User")
 
-    # 1) Roles
     Role.objects.get_or_create(
         name="HR",
         defaults={
@@ -38,9 +37,7 @@ def seed_demo_users(apps, schema_editor):
         },
     )
 
-    # 2) Default department
     dept, _ = Department.objects.get_or_create(name="General")
-
     today = timezone.now().date()
 
     demo = [
@@ -76,25 +73,22 @@ def seed_demo_users(apps, schema_editor):
     created_emps = {}
 
     for item in demo:
-        # چون set_password نداریم، مستقیم password رو هش می‌کنیم
+        # نکته مهم: اینجا set_password نداریم، پس password رو هش می‌کنیم
         user, created = User.objects.get_or_create(
             username=item["username"],
             defaults={
                 "email": item["email"],
                 "first_name": item["first_name"],
                 "last_name": item["last_name"],
-                "is_active": True,
                 "password": make_password(item["password"]),
+                "is_active": True,
             },
         )
 
-        # اگر از قبل بوده هم پسورد رو آپدیت کن که مطمئن باشی همونه
+        # اگر یوزر از قبل بود، پسوردش رو آپدیت کن (ولی Migration فقط یک‌بار اجرا میشه؛ این بیشتر برای اطمینانه)
         if not created:
-            user.email = item["email"]
-            user.first_name = item["first_name"]
-            user.last_name = item["last_name"]
-            user.is_active = True
             user.password = make_password(item["password"])
+            user.is_active = True
             user.save()
 
         emp, _ = Employee.objects.get_or_create(
@@ -112,29 +106,18 @@ def seed_demo_users(apps, schema_editor):
             },
         )
 
-        # اگر Employee از قبل بود هم فیلدهای مهم رو sync کن
-        emp.first_name = item["first_name"]
-        emp.last_name = item["last_name"]
-        emp.email = item["email"]
         emp.role = item["role"]
         emp.department = dept
-        if not emp.hire_date:
-            emp.hire_date = today
-        if not emp.salary:
-            emp.salary = 10000000
-        if not emp.designation:
-            emp.designation = item["designation"]
         emp.save()
 
         created_emps[item["username"]] = emp
 
-    # 4) manager relation
     mgr = created_emps.get("manager")
-    emp_obj = created_emps.get("employee")
-    if mgr and emp_obj:
-        emp_obj.managers.add(mgr)
-        emp_obj.team_lead = mgr
-        emp_obj.save()
+    emp = created_emps.get("employee")
+    if mgr and emp:
+        emp.managers.add(mgr)
+        emp.team_lead = mgr
+        emp.save()
 
 
 class Migration(migrations.Migration):
