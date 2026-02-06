@@ -9,8 +9,7 @@ def seed_demo_users(apps, schema_editor):
     Department = apps.get_model("employees", "Department")
     User = apps.get_model("auth", "User")
 
-    # 1) نقش‌ها داخل جدول roles
-    # توجه: portal تو مدل تو فقط Admin/Employee قبول می‌کنه
+    # 1) Roles
     Role.objects.get_or_create(
         name="HR",
         defaults={
@@ -39,10 +38,9 @@ def seed_demo_users(apps, schema_editor):
         },
     )
 
-    # 2) یک دپارتمان پیش‌فرض
+    # 2) Default department
     dept, _ = Department.objects.get_or_create(name="General")
 
-    # 3) ساخت ۳ یوزر + پروفایل Employee
     today = timezone.now().date()
 
     demo = [
@@ -78,26 +76,25 @@ def seed_demo_users(apps, schema_editor):
     created_emps = {}
 
     for item in demo:
-        hashed = make_password(item["password"])
-
+        # چون set_password نداریم، مستقیم password رو هش می‌کنیم
         user, created = User.objects.get_or_create(
             username=item["username"],
             defaults={
                 "email": item["email"],
                 "first_name": item["first_name"],
                 "last_name": item["last_name"],
-                "password": hashed,        # ✅ هش مستقیم
                 "is_active": True,
+                "password": make_password(item["password"]),
             },
         )
 
+        # اگر از قبل بوده هم پسورد رو آپدیت کن که مطمئن باشی همونه
         if not created:
-            # ✅ اگر یوزر قبلاً هست، پسورد/فعال بودن رو آپدیت کن
-            user.password = hashed
-            user.is_active = True
             user.email = item["email"]
             user.first_name = item["first_name"]
             user.last_name = item["last_name"]
+            user.is_active = True
+            user.password = make_password(item["password"])
             user.save()
 
         emp, _ = Employee.objects.get_or_create(
@@ -115,23 +112,29 @@ def seed_demo_users(apps, schema_editor):
             },
         )
 
-        # اگر از قبل وجود داشت، حداقل role/department و info رو درست کن
+        # اگر Employee از قبل بود هم فیلدهای مهم رو sync کن
         emp.first_name = item["first_name"]
         emp.last_name = item["last_name"]
         emp.email = item["email"]
         emp.role = item["role"]
         emp.department = dept
+        if not emp.hire_date:
+            emp.hire_date = today
+        if not emp.salary:
+            emp.salary = 10000000
+        if not emp.designation:
+            emp.designation = item["designation"]
         emp.save()
 
         created_emps[item["username"]] = emp
 
-    # 4) ست کردن Manager برای کارمند
+    # 4) manager relation
     mgr = created_emps.get("manager")
-    emp = created_emps.get("employee")
-    if mgr and emp:
-        emp.managers.add(mgr)
-        emp.team_lead = mgr
-        emp.save()
+    emp_obj = created_emps.get("employee")
+    if mgr and emp_obj:
+        emp_obj.managers.add(mgr)
+        emp_obj.team_lead = mgr
+        emp_obj.save()
 
 
 class Migration(migrations.Migration):
