@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+set -eu
+
+echo "[entrypoint] Running migrations..."
+python manage.py migrate --noinput
+
+echo "[entrypoint] Collecting static files..."
+python manage.py collectstatic --noinput
+
+echo "[entrypoint] Starting gunicorn..."
+exec gunicorn backend.wsgi:application \
+  --bind 0.0.0.0:${PORT:-8000} \
+  --workers ${GUNICORN_WORKERS:-2} \
+  --timeout ${GUNICORN_TIMEOUT:-120}

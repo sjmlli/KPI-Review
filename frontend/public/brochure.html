@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sundial HRMS | Company Brochure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #151412;
+        --muted: #5c574f;
+        --accent: #0f766e;
+        --accent-dark: #0b5f59;
+        --bg: #f8f4ee;
+        --panel: #ffffff;
+        --border: #dfd9cf;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Fraunces", serif;
+        margin: 0 0 0.5rem;
+      }
+
+      p {
+        margin: 0 0 0.75rem;
+        color: var(--muted);
+      }
+
+      .wrap {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem 4rem;
+      }
+
+      .hero {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        align-items: center;
+        padding: 2.5rem;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.65rem;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.85rem 1.6rem;
+        border-radius: 12px;
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .button.secondary {
+        background: transparent;
+        color: var(--accent);
+      }
+
+      .button:hover {
+        background: var(--accent-dark);
+        border-color: var(--accent-dark);
+      }
+
+      .button.secondary:hover {
+        color: #fff;
+      }
+
+      .section {
+        margin-top: 3rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 1.25rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 1.25rem;
+      }
+
+      .list {
+        margin: 0;
+        padding-left: 1rem;
+        color: var(--muted);
+      }
+
+      .list li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer {
+        margin-top: 3rem;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+        .cta-row,
+        .print-hide {
+          display: none;
+        }
+        .wrap {
+          padding: 0;
+        }
+        .hero,
+        .card {
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <span class="badge">Company Brochure</span>
+          <h1>Sundial HRMS</h1>
+          <p>
+            People operations on time, every day. A modern HR platform that
+            unifies onboarding, attendance, payroll, performance, and compliance
+            into one calm workspace.
+          </p>
+          <div class="cta-row print-hide">
+            <a class="button" href="mailto:hello@sundialhrms.com?subject=Schedule%20a%20demo">
+              Schedule a demo
+            </a>
+            <a class="button secondary" href="/login">Login</a>
+            <button class="button secondary" onclick="window.print()">Download PDF</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Who we serve</h3>
+          <p>
+            HR teams and growing organizations that need clarity, speed, and
+            accountability without manual spreadsheets.
+          </p>
+          <ul class="list">
+            <li>Mid-market teams with complex approvals</li>
+            <li>Enterprises with multi-location operations</li>
+            <li>Companies transitioning from fragmented tools</li>
+          </ul>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2>Why Sundial</h2>
+        <p>
+          Every module works together so data moves once, accurately. Managers,
+          HR, and employees all see the right information in the right portal.
+        </p>
+        <div class="grid">
+          <div class="card">
+            <h3>Single source of truth</h3>
+            <p>One employee record powers every workflow and report.</p>
+          </div>
+          <div class="card">
+            <h3>Manager-ready approvals</h3>
+            <p>Context-rich approvals for leave, overtime, and changes.</p>
+          </div>
+          <div class="card">
+            <h3>Policy aligned</h3>
+            <p>Custom roles, templates, and onboarding journeys per company.</p>
+          </div>
+          <div class="card">
+            <h3>Payroll ready</h3>
+            <p>Attendance and timesheets feed payroll without manual fixes.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Core modules</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Employee core</h3>
+            <p>Profiles, departments, managers, and custom roles.</p>
+          </div>
+          <div class="card">
+            <h3>Onboarding</h3>
+            <p>Offer letters, document collection, and checklists.</p>
+          </div>
+          <div class="card">
+            <h3>Attendance</h3>
+            <p>Shifts, biometric punches, and daily timesheets.</p>
+          </div>
+          <div class="card">
+            <h3>Leave</h3>
+            <p>Balances, approvals, and manager workflows.</p>
+          </div>
+          <div class="card">
+            <h3>Payroll</h3>
+            <p>Salary structures, payslips, and reimbursements.</p>
+          </div>
+          <div class="card">
+            <h3>Performance</h3>
+            <p>Reviews, goals, and feedback cycles.</p>
+          </div>
+          <div class="card">
+            <h3>Assets</h3>
+            <p>Assignments, handovers, and inventory.</p>
+          </div>
+          <div class="card">
+            <h3>Policies</h3>
+            <p>Acknowledgments with visibility tracking.</p>
+          </div>
+          <div class="card">
+            <h3>Recruitment</h3>
+            <p>Job postings, candidates, and integrations.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Implementation path</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Discovery</h3>
+            <p>Map policies, approvals, and data structure.</p>
+          </div>
+          <div class="card">
+            <h3>Configuration</h3>
+            <p>Roles, templates, and portals set to match your organization.</p>
+          </div>
+          <div class="card">
+            <h3>Launch</h3>
+            <p>Guided go-live with training for HR and managers.</p>
+          </div>
+          <div class="card">
+            <h3>Optimization</h3>
+            <p>Review analytics and refine workflows each quarter.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Security and trust</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Access control</h3>
+            <p>Role-based permissions and portal separation.</p>
+          </div>
+          <div class="card">
+            <h3>Audit trails</h3>
+            <p>Every critical change logged for accountability.</p>
+          </div>
+          <div class="card">
+            <h3>Data protection</h3>
+            <p>Encryption in transit and at rest, with retention controls.</p>
+          </div>
+          <div class="card">
+            <h3>Deployment choice</h3>
+            <p>Cloud or on-premises depending on compliance needs.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Contact</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Reach us</h3>
+            <p>Email: hello@sundialhrms.com</p>
+            <p>Phone: +91 00000 00000</p>
+            <p>Website: www.sundialhrms.com</p>
+          </div>
+          <div class="card">
+            <h3>Tagline</h3>
+            <p>
+              Time becomes your advantage with Sundial HRMS.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        Copyright 2025 Sundial HRMS. All rights reserved.
+      </div>
+    </div>
+  </body>
+</html>
