@@ -1,5 +1,6 @@
 from django.db import migrations
 from django.utils import timezone
+from django.contrib.auth.hashers import make_password
 
 
 def seed_demo_users(apps, schema_editor):
@@ -38,12 +39,10 @@ def seed_demo_users(apps, schema_editor):
         },
     )
 
-    # 2) یک دپارتمان پیش‌فرض (چون بعضی جاها ممکنه لازم بشه)
+    # 2) یک دپارتمان پیش‌فرض
     dept, _ = Department.objects.get_or_create(name="General")
 
     # 3) ساخت ۳ یوزر + پروفایل Employee
-    # نکته: Employee.email unique است، پس باید یکتا باشد
-    # نکته: hire_date و salary اجباری هستند
     today = timezone.now().date()
 
     demo = [
@@ -79,17 +78,26 @@ def seed_demo_users(apps, schema_editor):
     created_emps = {}
 
     for item in demo:
+        hashed = make_password(item["password"])
+
         user, created = User.objects.get_or_create(
             username=item["username"],
-            defaults={"email": item["email"], "first_name": item["first_name"], "last_name": item["last_name"]},
+            defaults={
+                "email": item["email"],
+                "first_name": item["first_name"],
+                "last_name": item["last_name"],
+                "password": hashed,        # ✅ هش مستقیم
+                "is_active": True,
+            },
         )
-        if created:
-            user.set_password(item["password"])
+
+        if not created:
+            # ✅ اگر یوزر قبلاً هست، پسورد/فعال بودن رو آپدیت کن
+            user.password = hashed
             user.is_active = True
-            user.save()
-        else:
-            # اگر یوزر از قبل هست، پسورد رو ست کن که مطمئن باشی همونه
-            user.set_password(item["password"])
+            user.email = item["email"]
+            user.first_name = item["first_name"]
+            user.last_name = item["last_name"]
             user.save()
 
         emp, _ = Employee.objects.get_or_create(
@@ -100,21 +108,24 @@ def seed_demo_users(apps, schema_editor):
                 "email": item["email"],
                 "hire_date": today,
                 "designation": item["designation"],
-                "role": item["role"],          # اینجا CharField است
-                "salary": 10000000,            # مقدار تستی
+                "role": item["role"],
+                "salary": 10000000,
                 "status": "Active",
                 "department": dept,
             },
         )
 
-        # اگر از قبل وجود داشت، حداقل role/department رو درست کن
+        # اگر از قبل وجود داشت، حداقل role/department و info رو درست کن
+        emp.first_name = item["first_name"]
+        emp.last_name = item["last_name"]
+        emp.email = item["email"]
         emp.role = item["role"]
         emp.department = dept
         emp.save()
 
         created_emps[item["username"]] = emp
 
-    # 4) ست کردن Manager برای کارمند (اختیاری ولی برای تست خوبه)
+    # 4) ست کردن Manager برای کارمند
     mgr = created_emps.get("manager")
     emp = created_emps.get("employee")
     if mgr and emp:
@@ -125,7 +136,7 @@ def seed_demo_users(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("employees", "0008_seed_manager_role"),  # اگر آخرین migration تو چیز دیگه‌ست، همینو عوض کن
+        ("employees", "0008_seed_manager_role"),
     ]
 
     operations = [
